@@ -22,20 +22,11 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Format Check') {
+        stage('Lint: Ruff Format Check C') {
             steps {
                 echo '🎨 Verificando formatação com Ruff...'
                 sh 'docker compose run --rm ruff-format'
             }
-        }
-    }
-
-    post {
-        failure {
-            echo '❌ Linting falhou. Verifique os erros do Ruff.'
-        }
-        success {
-            echo '✅ Código passou nas verificações do Ruff.'
         }
     }
 }
