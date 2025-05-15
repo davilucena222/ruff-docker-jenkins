@@ -32,5 +32,5 @@ pipeline {
 }
 
 stage("Unit tests") {
-    
+    sh "teste...."
 }
