@@ -30,7 +30,3 @@ pipeline {
         }
     }
 }
-
-stage("Unit tests") {
-    
-}
