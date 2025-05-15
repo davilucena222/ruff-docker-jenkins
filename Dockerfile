@@ -12,6 +12,7 @@ WORKDIR /app
 # Copia arquivos de dependências
 COPY venvsetup.sh pyproject.toml poetry.lock ./
 RUN ./venvsetup.sh
+RUN ls -la / && which ruff && sleep 20
 
 
 # Copia o restante da aplicação
