@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y curl build-essential && \
 
 ENV PATH="/root/.local/bin:$PATH"
 ENV PATH="/app/.venv/bin:$PATH"
+RUN echo "Rodando"
 
 WORKDIR /app
 
