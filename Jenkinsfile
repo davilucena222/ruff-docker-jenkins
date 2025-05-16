@@ -17,7 +17,7 @@ pipeline {
 
         stage('Lint: Ruff Check') {
             steps {
-                echo '🔍 Rodando análise estática com Ruff...'
+                echo '🔍 Rodando análise estática com Ruff kadjhkasldakds...'
                 sh 'docker compose run --rm ruff-check'
             }
         }
