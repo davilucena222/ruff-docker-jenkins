@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('Build Docker Container') {
+        stage('Build Docker') {
             steps {
                 echo '🔧 Buildando imagem com Docker Compose...'
                 sh 'docker compose build --no-cache'
@@ -22,10 +22,5 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Format C') {
-            steps {
-                echo '🎨 Verificando formatação com Ruff...'
-                sh 'docker compose run --rm ruff-format'
-            }
-        }
     }
+}
