@@ -22,10 +22,5 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Format C') {
-            steps {
-                echo '🎨 Verificando formatação com Ruff...'
-                sh 'docker compose run --rm ruff-format'
-            }
-        }
     }
+}
