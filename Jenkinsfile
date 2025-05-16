@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('Build Docker') {
+        stage('Build Docker Container') {
             steps {
                 echo '🔧 Buildando imagem com Docker Compose...'
                 sh 'docker compose build --no-cache'
