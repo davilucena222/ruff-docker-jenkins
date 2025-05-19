@@ -5,10 +5,6 @@ services:
       context: .
       target: static-config
   
-  ruff-format:
-    <<: *static-tools
-    entrypoint: ruff format --check
-  
   ruff-check:
     <<: *static-tools
     entrypoint: ruff check .

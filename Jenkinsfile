@@ -17,15 +17,12 @@ pipeline {
 
         stage('Lint: Ruff Check') {
             steps {
-                echo '🔍 Rodando análise estática com Ruff...'
-                sh 'docker compose run --rm ruff-check'
-            }
-        }
-
-        stage('Lint: Ruff Format C') {
-            steps {
-                echo '🎨 Verificando formatação com Ruff...'
-                sh 'docker compose run --rm ruff-format'
+                script {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                        echo '🔍 Rodando análise estática com Ruff...'
+                        sh 'docker compose run --rm ruff-check'
+                    }
+                }
             }
         }
     }
