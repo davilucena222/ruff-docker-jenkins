@@ -22,8 +22,7 @@ pipeline {
                         sh 'docker compose run --rm ruff-check'
                     }
                 }
+            }
         }
     }
 }
-
-
