@@ -18,15 +18,12 @@ pipeline {
         stage('Lint: Ruff Check') {
             steps {
                 script {
-                     try {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
                         sh 'docker compose run --rm ruff-check'
-                        echo '✅ Ruff passou sem erros.'
-                    } catch (err) {
-                        echo "⚠️ Erro detectado no Ruff: ${err}"
-                        currentBuild.result = 'UNSTABLE' // ou 'FAILURE' se quiser marcar como falha
                     }
                 }
-            }
         }
     }
 }
+
+
