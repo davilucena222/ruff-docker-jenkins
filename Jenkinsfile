@@ -15,14 +15,15 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Check - Testing') {
-            steps {
-                script {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                        echo '🔍 Rodando análise estática com Ruff...'
-                        sh 'docker compose run --rm ruff-check'
-                    }
-                }
+        stage('Lint: Ruff Check') {
+            echo '🔍 Rodando análise estática com Ruff...'
+            
+            try {
+                sh 'docker compose run --rm ruff-check'
+                echo '✅ Ruff passou sem erros.'
+            } catch (err) {
+                echo "⚠️ Erro detectado no Ruff: ${err}"
+                currentBuild.result = 'UNSTABLE' // ou 'FAILURE' se quiser marcar como falha
             }
         }
     }
