@@ -21,8 +21,8 @@ pipeline {
 
         stage("verificando branch") {
             steps {
-                def branchgName = getbranch()
-                echo "Branch atual: ${branchgName}"
+                def branchName = getbranch()
+                echo "Branch atual: ${branchName}"
             }
         }
 
