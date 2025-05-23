@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage("verificando branch") {
+        stage("verificando branch 2") {
             steps {
                 script {
                     def branchName = getbranch()
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                        sh 'docker compose run --rm ruff-check'
+                        sh 'docker compose run --rm ruff-check ls -la'
                     }
                 }
             }
