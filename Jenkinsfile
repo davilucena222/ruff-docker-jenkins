@@ -1,3 +1,7 @@
+def getbranch() {
+    return env.BRANCH_NAME
+}
+
 pipeline {
     agent any
 
@@ -12,6 +16,13 @@ pipeline {
             steps {
                 echo '🔧 Buildando imagem com Docker Compose...'
                 sh 'docker compose build --no-cache'
+            }
+        }
+
+        stage("verificando branch") {
+            steps {
+                def branchgName = getbranch()
+                echo "Branch atual: ${branchgName}"
             }
         }
 
