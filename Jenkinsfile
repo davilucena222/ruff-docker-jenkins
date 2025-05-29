@@ -21,15 +21,13 @@ pipeline {
 
         stage('Lint: Ruff Check') {
             steps {
-                script {
-                    if (params.RODAR_RUFF) {
-                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                            echo '🧪 Executando Ruff Check...'
-                            sh 'docker compose run --rm ruff-check'
-                        }
-                    } else {
-                        echo '⚠️ Ruff Check pulado conforme configuração.'
+                if (params.RODAR_RUFF) {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                        echo '🧪 Executando Ruff Check...'
+                        sh 'docker compose run --rm ruff-check'
                     }
+                } else {
+                    echo '⚠️ Ruff Check pulado conforme configuração.'
                 }
             }
         }
