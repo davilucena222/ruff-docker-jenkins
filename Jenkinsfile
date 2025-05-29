@@ -18,7 +18,7 @@ pipeline {
         stage('Lint: Ruff Check') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                    sh 'docker compose run --rm ruff-check ls -la'
+                    sh 'docker compose run --rm ruff-check'
                 }
             }
         }
