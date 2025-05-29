@@ -21,6 +21,7 @@ pipeline {
 
         stage('Lint: Ruff Check') {
             steps {
+                // ❌ Esse 'if' está fora de script {} e vai gerar erro
                 if (params.RODAR_RUFF) {
                     catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
                         echo '🧪 Executando Ruff Check...'
