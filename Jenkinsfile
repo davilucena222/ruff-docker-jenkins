@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+        booleanParam(name: 'RODAR_RUFF', defaultValue: true, description: 'Executar Ruff Check?')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -17,8 +21,15 @@ pipeline {
 
         stage('Lint: Ruff Check') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                    sh 'docker compose run --rm ruff-check'
+                script {
+                    if (params.RODAR_RUFF) {
+                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                            echo '🧪 Executando Ruff Check...'
+                            sh 'docker compose run --rm ruff-check'
+                        }
+                    } else {
+                        echo '⚠️ Ruff Check pulado conforme configuração.'
+                    }
                 }
             }
         }
