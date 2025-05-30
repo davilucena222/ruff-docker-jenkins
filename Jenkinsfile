@@ -25,14 +25,15 @@ pipeline {
             }
 
             steps {
-                // ❌ Esse 'if' está fora de script {} e vai gerar erro
-                if (params.RODAR_RUFF) {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                        echo '🧪 Executando Ruff Check...'
-                        sh 'docker compose run --rm ruff-check'
+                script {
+                    if (params.RODAR_RUFF) {
+                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                            echo '🧪 Executando Ruff Check...'
+                            sh 'docker compose run --rm ruff-check'
+                        }
+                    } else {
+                        echo '⚠️ Ruff Check pulado conforme configuração.'
                     }
-                } else {
-                    echo '⚠️ Ruff Check pulado conforme configuração.'
                 }
             }
         }
@@ -45,14 +46,15 @@ pipeline {
             }
 
             steps {
-                // ❌ Esse 'if' está fora de script {} e vai gerar erro
-                if (params.RODAR_RUFF) {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                        echo '🧪 Executando Ruff Check...'
-                        sh 'docker compose run --rm ruff-check'
+                script {
+                    if (params.RODAR_RUFF) {
+                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                            echo '🧪 Executando Ruff Check...'
+                            sh 'docker compose run --rm ruff-check'
+                        }
+                    } else {
+                        echo '⚠️ Ruff Check pulado conforme configuração.'
                     }
-                } else {
-                    echo '⚠️ Ruff Check pulado conforme configuração.'
                 }
             }
         }
