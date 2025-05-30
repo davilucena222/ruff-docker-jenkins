@@ -21,7 +21,9 @@ pipeline {
 
         stage('Lint: Ruff Check - PR') {
             when {
-                changeRequest()
+                expression {
+                    env.CHANGE_ID
+                }
             }
 
             steps {
@@ -40,8 +42,8 @@ pipeline {
 
         stage('Lint: Ruff Check - BRANCH') {
             when {
-                not {
-                    changeRequest()
+                expression {
+                    !env.CHANGE_ID
                 }
             }
 
