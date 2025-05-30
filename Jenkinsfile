@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Check - BRANCH') {
+        stage('Lint: Ruff Check - PRs') {
             when {
                 changeRequest()
             }
