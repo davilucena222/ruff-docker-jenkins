@@ -22,7 +22,7 @@ pipeline {
         stage('Lint: Ruff Check - PR') {
             when {
                 expression {
-                    return env.CHANGE_ID != null
+                    env.CHANGE_ID
                 }
             }
 
@@ -43,7 +43,7 @@ pipeline {
         stage('Lint: Ruff Check - BRANCH') {
             when {
                 expression {
-                    return env.CHANGE_ID == null
+                    !env.CHANGE_ID
                 }
             }
 
