@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Check - Pull Request') {
+        stage('Lint: Ruff Check - PR') {
             when {
                 changeRequest()
             }
