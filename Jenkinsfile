@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Check - PR') {
+        stage('Lint: Ruff Check - PR (agora vai)') {
             when {
                 expression {
                     env.CHANGE_ID
