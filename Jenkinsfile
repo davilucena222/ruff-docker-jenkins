@@ -61,7 +61,7 @@ pipeline {
             }
         }
 
-        stage('Info hjghj') {
+        stage('Info hjghjljhkjhkjh') {
             steps {
                 echo "Branch atual: ${env.BRANCH_NAME}"
                 echo "CHANGE_ID: ${env.CHANGE_ID ?: 'n/a'}"
