@@ -19,7 +19,31 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Check') {
+        stage('Lint: Ruff Check - BRANCH') {
+            when {
+                changeRequest()
+            }
+
+            steps {
+                // ❌ Esse 'if' está fora de script {} e vai gerar erro
+                if (params.RODAR_RUFF) {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                        echo '🧪 Executando Ruff Check...'
+                        sh 'docker compose run --rm ruff-check'
+                    }
+                } else {
+                    echo '⚠️ Ruff Check pulado conforme configuração.'
+                }
+            }
+        }
+
+        stage('Lint: Ruff Check - BRANCH') {
+            when {
+                not {
+                    changeRequest()
+                }
+            }
+
             steps {
                 // ❌ Esse 'if' está fora de script {} e vai gerar erro
                 if (params.RODAR_RUFF) {
