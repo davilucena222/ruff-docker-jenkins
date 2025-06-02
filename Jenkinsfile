@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Check - Pull Request') {
+        stage('Lint: Ruff Check - PR (agora vai)') {
             when {
                 changeRequest()
             }
@@ -58,5 +58,15 @@ pipeline {
                 }
             }
         }
+
+        stage('Info hjghjljhkjhkjh') {
+            steps {
+                echo "Branch atual: ${env.BRANCH_NAME}"
+                echo "CHANGE_ID: ${env.CHANGE_ID ?: 'n/a'}"
+                echo "Origem da PR: ${env.CHANGE_BRANCH ?: 'n/a'}"
+                echo "Destino da PR: ${env.CHANGE_TARGET ?: 'n/a'}"
+            }
+        }
+
     }
 }
