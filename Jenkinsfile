@@ -40,7 +40,7 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Check - BRANCH') {
+        stage('Lint: Ruff Check - BRANCH MAIN') {
             when {
                 expression {
                     return env.CHANGE_ID == null
