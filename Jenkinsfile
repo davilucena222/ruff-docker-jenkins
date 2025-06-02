@@ -19,9 +19,11 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Check - PR (agora vai)') {
+        stage('Lint: Ruff Check - PR') {
             when {
-                changeRequest()
+                expression {
+                    return env.CHANGE_ID != null
+                }
             }
 
             steps {
@@ -40,8 +42,8 @@ pipeline {
 
         stage('Lint: Ruff Check - BRANCH') {
             when {
-                not {
-                    changeRequest()
+                expression {
+                    return env.CHANGE_ID == null
                 }
             }
 
