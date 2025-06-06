@@ -12,6 +12,15 @@ pipeline {
             }
         }
 
+        stage('Atualiza descrição do build') {
+            steps {
+                script {
+                    currentBuild.description = '<a href="https://example.com" target="_blank">🔗 Link para artefato</a>'
+                }
+            }
+        }
+
+
         stage('Build Docker') {
             steps {
                 echo '🔧 Buildando imagem com Docker Compose...'

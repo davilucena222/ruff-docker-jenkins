@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "myproject"
-version = "0.1.0"
+version = "2.0.10"
 description = "Projeto com Ruff e Docker"
 authors = ["Seu Nome <email@exemplo.com>"]
 
