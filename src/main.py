@@ -1,8 +1,9 @@
-import os  # F401: importação não usada
+def main(**kwargs):
+    result = kwargs.get("userid", None)
+    
+    if result is not None:
+        print(f"User ID: {result}")
+    
+    print("User ID not provided")
 
-def soma(a, b):
-    resultado = a + b  # F841: variável atribuída mas nunca usada
-    return total  # F821: uso de variável não definida
-
-resultado =soma(5,3 )
-print(f"A soma é: {resultado}")
+main(userid=None)
