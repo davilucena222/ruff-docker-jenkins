@@ -11,7 +11,7 @@ pipeline {
                 checkout scm
             }
         }
-
+      
         stage('Atualiza descrição do build') {
             steps {
                 script {

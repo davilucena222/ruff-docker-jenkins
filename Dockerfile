@@ -6,12 +6,14 @@ RUN apt-get update && apt-get install -y curl build-essential && \
 
 ENV PATH="/root/.local/bin:$PATH"
 ENV PATH="/app/.venv/bin:$PATH"
+RUN echo "Rodando Docker Container"
 
 WORKDIR /app
 
 # Copia arquivos de dependências
 COPY venvsetup.sh pyproject.toml poetry.lock ./
 RUN ./venvsetup.sh
+RUN ls -la / && which ruff && sleep 20
 
 
 # Copia o restante da aplicação
