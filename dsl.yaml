@@ -1,7 +1,0 @@
-job('example') {
-    description('Job criado com DSL')
-    logRotator(-1, 10)
-    steps {
-        shell('echo Hello World')
-    }
-}
