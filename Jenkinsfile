@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+        cron('*/1 * * * *')
+    }
+
     parameters {
         booleanParam(name: 'RODAR_RUFF', defaultValue: true, description: 'Executar Ruff Check?')
     }
