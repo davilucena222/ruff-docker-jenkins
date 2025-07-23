@@ -32,14 +32,5 @@ pipeline {
             }
         }
 
-        stage('Info') {
-            steps {
-                echo "Branch atual: ${env.BRANCH_NAME}"
-                echo "CHANGE_ID: ${env.CHANGE_ID ?: 'n/a'}"
-                echo "Origem da PR: ${env.CHANGE_BRANCH ?: 'n/a'}"
-                echo "Destino da PR: ${env.CHANGE_TARGET ?: 'n/a'}"
-            }
-        }
-
     }
 }
