@@ -32,48 +32,6 @@ pipeline {
             }
         }
 
-        stage('Lint: Ruff Check - PR 2') {
-            when {
-                expression {
-                    return env.CHANGE_ID != null
-                }
-            }
-
-            steps {
-                script {
-                    if (params.RODAR_RUFF) {
-                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                            echo '🧪 Executando Ruff Check...'
-                            sh 'docker compose run --rm ruff-check'
-                        }
-                    } else {
-                        echo '⚠️ Ruff Check pulado conforme configuração.'
-                    }
-                }
-            }
-        }
-
-        stage('Lint: Ruff Check - BRANCH MAIN NOW') {
-            when {
-                expression {
-                    return env.CHANGE_ID == null
-                }
-            }
-
-            steps {
-                script {
-                    if (params.RODAR_RUFF) {
-                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                            echo '🧪 Executando Ruff Check...'
-                            sh 'docker compose run --rm ruff-check'
-                        }
-                    } else {
-                        echo '⚠️ Ruff Check pulado conforme configuração.'
-                    }
-                }
-            }
-        }
-
         stage('Info') {
             steps {
                 echo "Branch atual: ${env.BRANCH_NAME}"
