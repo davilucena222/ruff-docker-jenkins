@@ -8,3 +8,7 @@ services:
   ruff-check:
     <<: *static-tools
     entrypoint: ruff check .
+
+  ruff-format:
+    <<: *static-tools
+    entrypoint: ruff format .

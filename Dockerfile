@@ -7,12 +7,10 @@ RUN apt-get update && apt-get install -y curl build-essential && \
 ENV PATH="/root/.local/bin:$PATH"
 ENV PATH="/app/.venv/bin:$PATH"
 
-WORKDIR /app
+WORKDIR /
 
 # Copia arquivos de dependências
-COPY venvsetup.sh pyproject.toml poetry.lock ./
-RUN ./venvsetup.sh
-
+COPY pyproject.toml uv.lock ./
 
 # Copia o restante da aplicação
 COPY . .
